@@ -119,7 +119,7 @@ define(["js/properties", "js/sound", "js/squareImages", "js/info"], (properties,
     };
 
     Board.prototype.clicked = event => {
-        if (level.filledSquares() < level.squaresToFill) {
+        if (level.filledSquares() < level.squaresToFill && info.movementTotal() < level.maxMovementsAchievement) {
             if (event.target.className.startsWith("squareImage")) {
                 if (level.pinSelected) {
                     level.board.pinSquare(event.target.id);
@@ -143,7 +143,7 @@ define(["js/properties", "js/sound", "js/squareImages", "js/info"], (properties,
     }   
 
     Board.prototype.mouseover = event => {    
-        if (level.filledSquares() < level.squaresToFill) {  
+        if (level.filledSquares() < level.squaresToFill && info.movementTotal() < level.maxMovementsAchievement) {  
             if (event.target.className.startsWith("squareImage")) { 
                 const squarePosition = squareImages.getPosition(event.target.id); 
                 let mouseOveredSquare = level.board.squares[squarePosition[0]][squarePosition[1]];  
@@ -156,7 +156,7 @@ define(["js/properties", "js/sound", "js/squareImages", "js/info"], (properties,
     };  
     
     Board.prototype.mouseout = event => { 
-        if (level.filledSquares() < level.squaresToFill) {  
+        if (level.filledSquares() < level.squaresToFill && info.movementTotal() < level.maxMovementsAchievement) {  
             if (event.target.className.startsWith("squareImage")) { 
                 const squarePosition = squareImages.getPosition(event.target.id); 
                 let mouseOveredSquare = level.board.squares[squarePosition[0]][squarePosition[1]];  
