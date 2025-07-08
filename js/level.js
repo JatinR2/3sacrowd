@@ -12,12 +12,20 @@ define(() => {
             return this.board.numberFilledSquares();
         };
         this.maxTimeAchievement = levelConfiguration.maxTimeAchievement;
+
         this.maxMovementsAchievement = levelConfiguration.maxMovementsAchievement;
+    }
+
+    Level.prototype.canMove = function() {
+        return this.movements.length < this.maxMovementsAchievement;
+
     }
 
     Level.prototype.addMovement = function(position) {
         if (this.indexOfMovement(position) === -1) {
-            this.movements.push(position);
+            if (this.canMove()) {
+                this.movements.push(position);
+            }
         }
     };
 
